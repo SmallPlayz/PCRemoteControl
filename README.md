@@ -1,6 +1,6 @@
 # PCRemoteControl
-ez school project yes
+ez school project yes    
 
-stats:
-server: 242 lines of code  
-client: 86 lines of code
+##Project Statistics  
+**server:** 242 lines of code.  
+**client:** 86 lines of code.
