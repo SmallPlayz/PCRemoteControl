@@ -77,8 +77,8 @@ class clientThread extends Thread {
         clientThread[] threads = this.threads;
 
         try {
-            Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            Server.frame.setUndecorated(true);
+            Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // delete if needed
+            Server.frame.setUndecorated(true); // delete if needed
             Server.frame.setVisible(true);
             is = new DataInputStream(clientSocket.getInputStream());
             os = new PrintStream(clientSocket.getOutputStream());
