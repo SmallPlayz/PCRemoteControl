@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e240036-b73f-4db4-b7fa-d6180fe415eb" name="Changes" comment="worked a lot on this">
+    <list default="true" id="0e240036-b73f-4db4-b7fa-d6180fe415eb" name="Changes" comment="keycodes go through now...">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/among_us_sturfhyggfewiuhgrewiuhgew_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/among_us_sturfhyggfewiuhgrewiuhgew_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/among us sturfhyggfewiuhgrewiuhgew.iml" beforeDir="false" afterPath="$PROJECT_DIR$/a folder i guess.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ServerTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerTwo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,20 +37,36 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="among us sturfhyggfewiuhgrewiuhgew" />
+      <module name="a folder i guess" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Server" />
-      <module name="among us sturfhyggfewiuhgrewiuhgew" />
+      <module name="a folder i guess" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="a folder i guess" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="a folder i guess" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668902745765</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="keycodes go through now...">
+      <created>1668905014697</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668905014697</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +123,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="among us" />
     <MESSAGE value="worked a lot on this" />
-    <option name="LAST_COMMIT_MESSAGE" value="worked a lot on this" />
+    <MESSAGE value="keycodes go through now..." />
+    <option name="LAST_COMMIT_MESSAGE" value="keycodes go through now..." />
   </component>
 </project>

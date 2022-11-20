@@ -13,14 +13,11 @@ public class Client extends Thread {
     private static Socket clientSocket = null;
     public static PrintStream os = null;
     private static DataInputStream is = null;
-    private static BufferedReader inputLine = null;
-    private static boolean closed = false;
     public static void main(String[] args) {
         String serverName = "localhost";
         int port = 6066, port2 = 6065;
         try{
             clientSocket = new Socket(serverName, port2);
-            inputLine = new BufferedReader(new InputStreamReader(System.in));
             os = new PrintStream(clientSocket.getOutputStream());
             is = new DataInputStream(clientSocket.getInputStream());
             Client thread = new Client();
@@ -46,7 +43,6 @@ public class Client extends Thread {
             while ((responseLine = is.readLine()) != null) {
                 System.out.println(responseLine);
             }
-            closed = true;
         } catch (IOException e) {
             System.err.println("IOException:  " + e);
         }

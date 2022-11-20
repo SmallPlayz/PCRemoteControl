@@ -2,7 +2,7 @@
   <artifact type="jar" name="among us sturfhyggfewiuhgrewiuhgew:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/among_us_sturfhyggfewiuhgrewiuhgew_jar</output-path>
     <root id="archive" name="among us sturfhyggfewiuhgrewiuhgew.jar">
-      <element id="module-output" name="among us sturfhyggfewiuhgrewiuhgew" />
+      <element id="module-output" name="a folder i guess" />
     </root>
   </artifact>
 </component>
