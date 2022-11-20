@@ -1,7 +1,9 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
@@ -48,10 +50,8 @@ public class Server extends Thread
             {
                 e.printStackTrace();
                 break;
-            }
-            catch(Exception ex)
-            {
-                System.out.println(ex);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -60,6 +60,7 @@ public class Server extends Thread
     {
         Thread t = new Server(6066);
         t.start();
+
         frame.addMouseListener(new MouseListener() {
             public void mousePressed(MouseEvent me) { }
             public void mouseReleased(MouseEvent me) { }
@@ -77,7 +78,10 @@ public class Server extends Thread
                 }
             }
         });
+
         frame.setVisible(true);
         System.out.println("Server running...");
+
+        ServerTwo s = new ServerTwo(6065); // hehe
     }
 }
