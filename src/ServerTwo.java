@@ -176,6 +176,7 @@ class clientThread extends Thread {
                     threads[i].os.println("client is disconnecting from the server.");
                 }
             }
+
             for (int i = 0; i < maxClientsCount; i++) {
                 if (threads[i] == this) {
                     threads[i] = null;
