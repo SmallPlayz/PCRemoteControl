@@ -16,40 +16,32 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Server extends Thread
-{
+public class Server extends Thread {
     private ServerSocket serverSocket;
     Socket server;
 
     static JFrame frame = new JFrame("Client Screen");
     static JLabel label = new JLabel();
+    static boolean fullscreen = false;
 
-    public Server(int port) throws IOException, SQLException, ClassNotFoundException, Exception
-    {
+    public Server(int port) throws IOException, SQLException, ClassNotFoundException, Exception {
         serverSocket = new ServerSocket(port);
-        serverSocket.setSoTimeout(3600000);
+        serverSocket.setSoTimeout(86400000);
     }
-
-    public void run()
-    {
-        while(true)
-        {
-            try
-            {
+    public void run() {
+        while(true) {
+            try {
                 server = serverSocket.accept();
                 BufferedImage img=ImageIO.read(ImageIO.createImageInputStream(server.getInputStream()));
                 label.setIcon(new ImageIcon(img));
+                label.setLocation(0,0);
                 frame.getContentPane().add(label);
-                frame.pack();
+                //frame.pack();
                 Thread.sleep((long) 16.66);
-            }
-            catch(SocketTimeoutException st)
-            {
+            } catch(SocketTimeoutException st) {
                 System.out.println("Socket timed out!");
                 break;
-            }
-            catch(IOException e)
-            {
+            } catch(IOException e) {
                 e.printStackTrace();
                 break;
             } catch (InterruptedException e) {
@@ -57,9 +49,7 @@ public class Server extends Thread
             }
         }
     }
-
-    public static void main(String [] args) throws IOException, SQLException, ClassNotFoundException, Exception
-    {
+    public static void main(String [] args) throws IOException, SQLException, ClassNotFoundException, Exception {
         Thread t = new Server(6066);
         t.start();
         ServerTwo serverTwo = new ServerTwo(6065);

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -26,7 +27,6 @@ public class ServerTwo {
         try {
             serverSocket = new ServerSocket(portNumber);
             int i = 0;
-            Server.frame.setVisible(true);
             System.out.println("Server running...");
             while (true) {
                 clientSocket = serverSocket.accept();
@@ -77,6 +77,9 @@ class clientThread extends Thread {
         clientThread[] threads = this.threads;
 
         try {
+            Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            Server.frame.setUndecorated(true);
+            Server.frame.setVisible(true);
             is = new DataInputStream(clientSocket.getInputStream());
             os = new PrintStream(clientSocket.getOutputStream());
 
@@ -150,43 +153,33 @@ class clientThread extends Thread {
                         os.println("F7");
                     else if(e.getKeyCode() == KeyEvent.VK_F8)
                         os.println("F8");
-                }
-            });
-
-            for (int i = 0; i < maxClientsCount; i++) {
-                if (threads[i] != null && threads[i] != this) {
-                    threads[i].os.println("client has connected to the server!");
-                }
-            }
-            while (true) {
-                String line = is.readLine();
-                System.out.println(line);
-                os.println(line);
-                if (line.startsWith("/exit")) {
-                    break;
-                }
-                for (int i = 0; i < maxClientsCount; i++) {
-                    if (threads[i] != null) {
-                        threads[i].os.println(line);
+                    else if(e.getKeyCode() == KeyEvent.VK_WINDOWS)
+                        os.println("Windows");
+                    else if(e.getKeyCode() == KeyEvent.VK_DELETE) {
+                        if(!Server.fullscreen){
+                            Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            Server.frame.setUndecorated(true);
+                            Server.frame.setVisible(true);
+                            Server.fullscreen = true;
+                        }else{
+                            Server.frame.setSize(1280, 720);
+                            Server.frame.setVisible(true);
+                            Server.fullscreen = false;
+                        }
                     }
                 }
+            });
+            while (true) {
+                PointerInfo a = MouseInfo.getPointerInfo();
+                Point b = a.getLocation();
+                int mouseX = (int) b.getX(), mouseY = (int) b.getY();
+                os.println(mouseX + "|" + mouseY);
+                Thread.sleep((long) 16.66);
             }
-            for (int i = 0; i < maxClientsCount; i++) {
-                if (threads[i] != null && threads[i] != this) {
-                    threads[i].os.println("client is disconnecting from the server.");
-                }
-            }
-
-            for (int i = 0; i < maxClientsCount; i++) {
-                if (threads[i] == this) {
-                    threads[i] = null;
-                }
-            }
-            is.close();
-            os.close();
-            clientSocket.close();
         } catch (IOException e) {
             System.err.println(e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

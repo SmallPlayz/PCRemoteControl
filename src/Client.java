@@ -46,30 +46,35 @@ public class Client extends Thread {
             while ((responseLine = is.readLine()) != null) {
                 System.out.println(responseLine);
 
-                if(responseLine.substring(0, 8).equals("Keycode:"))
-                    System.out.println("heuy");
-
-                switch (responseLine) {
-                    case "Left Click" -> robot.mousePress(InputEvent.BUTTON1_MASK);
-                    case "Left Click Release" -> robot.mouseRelease(InputEvent.BUTTON1_MASK);
-                    case "Middle Click" -> robot.mousePress(InputEvent.BUTTON2_MASK);
-                    case "Middle Click Release" -> robot.mouseRelease(InputEvent.BUTTON2_MASK);
-                    case "Right Click" -> robot.mousePress(InputEvent.BUTTON3_MASK);
-                    case "Right Click Release" -> robot.mouseRelease(InputEvent.BUTTON3_MASK);
-                    case "Enter" -> {robot.keyPress(KeyEvent.VK_ENTER);robot.keyRelease(KeyEvent.VK_ENTER);System.out.println("hii");}
-                    case "Shift" -> {robot.keyPress(16);robot.keyRelease(16);}
-                    case "Caps Lock" -> {robot.keyPress(20);robot.keyRelease(20);}
-                    case "Control" -> {robot.keyPress(17);robot.keyRelease(17);}
-                    case "Alt" -> {robot.keyPress(18);robot.keyRelease(18);}
-                    case "Back Space" -> {robot.keyPress(8);robot.keyRelease(8);}
-                    case "Escape" -> {robot.keyPress(27);robot.keyRelease(27);}
-                    case "Up Arrow" -> {robot.keyPress(38);robot.keyRelease(38);}
-                    case "Down Arrow" -> {robot.keyPress(40);robot.keyRelease(40);}
-                    case "Left Arrow" -> {robot.keyPress(37);robot.keyRelease(37);}
-                    case "Right Arrow" -> {robot.keyPress(39);robot.keyRelease(39);}
-                    case "F6" -> {robot.keyPress(117);robot.keyRelease(117);}
-                    case "F7" -> {robot.keyPress(118);robot.keyRelease(118);}
-                    case "F8" -> {robot.keyPress(119);robot.keyRelease(119);}
+                if(responseLine.length()>9 && responseLine.substring(0, 8).equals("Keycode:")){
+                    robot.keyPress(Integer.parseInt(responseLine.substring(8)));
+                    robot.keyRelease(Integer.parseInt(responseLine.substring(8)));
+                }else if(responseLine.contains("|")){
+                    robot.mouseMove(Integer.parseInt(responseLine.substring(0, responseLine.indexOf("|"))), Integer.parseInt(responseLine.substring(responseLine.indexOf("|")+1)));
+                }else{
+                    switch (responseLine) {
+                        case "Left Click" -> robot.mousePress(InputEvent.BUTTON1_MASK);
+                        case "Left Click Release" -> robot.mouseRelease(InputEvent.BUTTON1_MASK);
+                        case "Middle Click" -> robot.mousePress(InputEvent.BUTTON2_MASK);
+                        case "Middle Click Release" -> robot.mouseRelease(InputEvent.BUTTON2_MASK);
+                        case "Right Click" -> robot.mousePress(InputEvent.BUTTON3_MASK);
+                        case "Right Click Release" -> robot.mouseRelease(InputEvent.BUTTON3_MASK);
+                        case "Enter" -> {robot.keyPress(KeyEvent.VK_ENTER);robot.keyRelease(KeyEvent.VK_ENTER);}
+                        case "Shift" -> {robot.keyPress(KeyEvent.VK_SHIFT);robot.keyRelease(KeyEvent.VK_SHIFT);}
+                        case "Caps Lock" -> {robot.keyPress(KeyEvent.VK_CAPS_LOCK);robot.keyRelease(KeyEvent.VK_CAPS_LOCK);}
+                        case "Control" -> {robot.keyPress(KeyEvent.VK_CONTROL);robot.keyRelease(KeyEvent.VK_CONTROL);}
+                        case "Alt" -> {robot.keyPress(KeyEvent.VK_ALT);robot.keyRelease(KeyEvent.VK_ALT);}
+                        case "Back Space" -> {robot.keyPress(KeyEvent.VK_BACK_SPACE);robot.keyRelease(KeyEvent.VK_BACK_SPACE);}
+                        case "Escape" -> {robot.keyPress(KeyEvent.VK_ESCAPE);robot.keyRelease(KeyEvent.VK_ESCAPE);}
+                        case "Up Arrow" -> {robot.keyPress(KeyEvent.VK_UP);robot.keyRelease(KeyEvent.VK_UP);}
+                        case "Down Arrow" -> {robot.keyPress(KeyEvent.VK_DOWN);robot.keyRelease(KeyEvent.VK_DOWN);}
+                        case "Left Arrow" -> {robot.keyPress(KeyEvent.VK_LEFT);robot.keyRelease(KeyEvent.VK_LEFT);}
+                        case "Right Arrow" -> {robot.keyPress(KeyEvent.VK_RIGHT);robot.keyRelease(KeyEvent.VK_RIGHT);}
+                        case "F6" -> {robot.keyPress(KeyEvent.VK_F6);robot.keyRelease(KeyEvent.VK_F6);}
+                        case "F7" -> {robot.keyPress(KeyEvent.VK_F7);robot.keyRelease(KeyEvent.VK_F7);}
+                        case "F8" -> {robot.keyPress(KeyEvent.VK_F8);robot.keyRelease(KeyEvent.VK_F8);}
+                        case "Windows" -> {robot.keyPress(KeyEvent.VK_WINDOWS);robot.keyRelease(KeyEvent.VK_WINDOWS);}
+                    }
                 }
             }
         } catch (IOException e) {
