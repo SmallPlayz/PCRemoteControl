@@ -1,3 +1,8 @@
+import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.DataInputStream;
 import java.io.PrintStream;
 import java.io.IOException;
@@ -21,6 +26,8 @@ public class ServerTwo {
         try {
             serverSocket = new ServerSocket(portNumber);
             int i = 0;
+            Server.frame.setVisible(true);
+            System.out.println("Server running...");
             while (true) {
                 clientSocket = serverSocket.accept();
                 for (i = 0; i < maxClientsCount; i++) {
@@ -72,6 +79,46 @@ class clientThread extends Thread {
         try {
             is = new DataInputStream(clientSocket.getInputStream());
             os = new PrintStream(clientSocket.getOutputStream());
+
+            class Keychecker extends KeyAdapter {
+
+                @Override
+                public void keyPressed(KeyEvent event) {
+                    //os.println(event.getKeyChar());
+                    KeyStroke ks = KeyStroke.getKeyStroke(event.getKeyChar(), 0);
+                    if(ks.getKeyCode() < 1000) os.println("Keycode:" + ks.getKeyCode());
+                }
+            }
+
+            Server.frame.addKeyListener(new Keychecker());
+            Server.frame.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    if (me.getButton() == MouseEvent.BUTTON1) {
+                        os.println("Left Click");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON2) {
+                        os.println("Middle Click");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON3) {
+                        os.println("Right Click");
+                    }
+                }
+                public void mouseReleased(MouseEvent me) {
+                    if (me.getButton() == MouseEvent.BUTTON1) {
+                        os.println("Left Click Release");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON2) {
+                        os.println("Middle Click Release");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON3) {
+                        os.println("Right Click Release");
+                    }
+                }
+                public void mouseEntered(MouseEvent me) { }
+                public void mouseExited(MouseEvent me) { }
+                public void mouseClicked(MouseEvent me) { }
+            });
+
             for (int i = 0; i < maxClientsCount; i++) {
                 if (threads[i] != null && threads[i] != this) {
                     threads[i].os.println("client has connected to the server!");
@@ -80,7 +127,6 @@ class clientThread extends Thread {
             while (true) {
                 String line = is.readLine();
                 System.out.println(line);
-                os.println(line);
                 os.println(line);
                 if (line.startsWith("/exit")) {
                     break;

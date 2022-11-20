@@ -1,3 +1,5 @@
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -60,28 +62,6 @@ public class Server extends Thread
     {
         Thread t = new Server(6066);
         t.start();
-
-        frame.addMouseListener(new MouseListener() {
-            public void mousePressed(MouseEvent me) { }
-            public void mouseReleased(MouseEvent me) { }
-            public void mouseEntered(MouseEvent me) { }
-            public void mouseExited(MouseEvent me) { }
-            public void mouseClicked(MouseEvent me) {
-                if (me.getButton() == MouseEvent.BUTTON1) {
-                    System.out.println("left click");
-                }
-                if (me.getButton() == MouseEvent.BUTTON2) {
-                    System.out.println("middle click");
-                }
-                if (me.getButton() == MouseEvent.BUTTON3) {
-                    System.out.println("right? click");
-                }
-            }
-        });
-
-        frame.setVisible(true);
-        System.out.println("Server running...");
-
-        ServerTwo s = new ServerTwo(6065); // hehe
+        ServerTwo serverTwo = new ServerTwo(6065);
     }
 }
