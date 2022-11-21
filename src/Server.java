@@ -64,12 +64,12 @@ public class Server extends Thread {
     public static void main(String [] args) throws IOException, SQLException, ClassNotFoundException, Exception {
         Thread t = new Server(6066);
         t.start();
-        frame2.setLocation(2500,400);
+        //frame2.setLocation(2500,400);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // delete if needed
-        Server.frame.setUndecorated(true); // delete if needed
+        //Server.frame.setUndecorated(true); // delete if needed
         frame.setVisible(true);
         frame2.setExtendedState(JFrame.MAXIMIZED_BOTH); // delete if needed
-        Server.frame2.setUndecorated(true); // delete if needed
+        //Server.frame2.setUndecorated(true); // delete if needed
         frame2.setVisible(true);
         ServerTwo serverTwo = new ServerTwo(6065);
     }

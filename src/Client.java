@@ -29,7 +29,7 @@ public class Client extends Thread {
         String serverName = "10.10.3.242";
         int port = 6066, port2 = 6065, port3 = 6067;
         try{
-            clientSocket = new Socket(serverName, port2);
+            clientSocket = new Socket(serverName, port);
             os = new PrintStream(clientSocket.getOutputStream());
             is = new DataInputStream(clientSocket.getInputStream());
 
