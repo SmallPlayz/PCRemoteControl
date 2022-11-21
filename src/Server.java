@@ -44,11 +44,14 @@ public class Server extends Thread {
                 label.setLocation(0,0);
                 frame.getContentPane().add(label);
                 //frame.pack();
+                /*
                 server2 = serverSocket2.accept();
                 BufferedImage img2=ImageIO.read(ImageIO.createImageInputStream(server2.getInputStream()));
                 label2.setIcon(new ImageIcon(img2));
                 label2.setLocation(0,0);
                 frame2.getContentPane().add(label2);
+
+                 */
                 Thread.sleep((long) 16.66);
             } catch(SocketTimeoutException st) {
                 System.out.println("Socket timed out!");
@@ -64,7 +67,7 @@ public class Server extends Thread {
     public static void main(String [] args) throws IOException, SQLException, ClassNotFoundException, Exception {
         Thread t = new Server(6066);
         t.start();
-        //frame2.setLocation(2500,400);
+        frame2.setLocation(2500,400);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // delete if needed
         //Server.frame.setUndecorated(true); // delete if needed
         frame.setVisible(true);

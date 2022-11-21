@@ -7,11 +7,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e240036-b73f-4db4-b7fa-d6180fe415eb" name="Changes" comment="jtejtejtjrewgrwhhtwhtgrwhrwhgrwhtrw">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0e240036-b73f-4db4-b7fa-d6180fe415eb" name="Changes" comment="rggr">
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServerTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerTwo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669040466011</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="hyrehre">
+      <created>1669043805636</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669043805636</updated>
+    </task>
+    <task id="LOCAL-00004" summary="rggr">
+      <created>1669044008918</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669044008918</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,6 +89,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="jtejtejtjrewgrwhhtwht" />
     <MESSAGE value="jtejtejtjrewgrwhhtwhtgrwhrwhgrwhtrw" />
-    <option name="LAST_COMMIT_MESSAGE" value="jtejtejtjrewgrwhhtwhtgrwhrwhgrwhtrw" />
+    <MESSAGE value="hyrehre" />
+    <MESSAGE value="rggr" />
+    <option name="LAST_COMMIT_MESSAGE" value="rggr" />
   </component>
 </project>

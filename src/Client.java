@@ -46,18 +46,18 @@ public class Client extends Thread {
                 BufferedImage bimg = bot.createScreenCapture(new Rectangle(0, 0, 1600, 900));
                 ImageIO.write(bimg,"JPG",client.getOutputStream());
                 client.close();
-
+/*
                 Socket client2 = new Socket(serverName, port3);
                 Robot bot2 = new Robot();
                 BufferedImage bimg2 = bot2.createScreenCapture(new Rectangle(1600, 900, 1600, 900));
                 ImageIO.write(bimg2,"JPG",client2.getOutputStream());
                 client2.close();
                 Thread.sleep((long) 16.66);
+
+ */
             }
         } catch(IOException | AWTException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
     public void run() {
