@@ -77,9 +77,6 @@ class clientThread extends Thread {
         clientThread[] threads = this.threads;
 
         try {
-            Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // delete if needed
-            Server.frame.setUndecorated(true); // delete if needed
-            Server.frame.setVisible(true);
             is = new DataInputStream(clientSocket.getInputStream());
             os = new PrintStream(clientSocket.getOutputStream());
 
@@ -94,6 +91,7 @@ class clientThread extends Thread {
             }
 
             Server.frame.addKeyListener(new Keychecker());
+            Server.frame2.addKeyListener(new Keychecker());
             Server.frame.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
                     if (me.getButton() == MouseEvent.BUTTON1) {
@@ -121,7 +119,33 @@ class clientThread extends Thread {
                 public void mouseExited(MouseEvent me) { }
                 public void mouseClicked(MouseEvent me) { }
             });
-
+            Server.frame2.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    if (me.getButton() == MouseEvent.BUTTON1) {
+                        os.println("Left Click");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON2) {
+                        os.println("Middle Click");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON3) {
+                        os.println("Right Click");
+                    }
+                }
+                public void mouseReleased(MouseEvent me) {
+                    if (me.getButton() == MouseEvent.BUTTON1) {
+                        os.println("Left Click Release");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON2) {
+                        os.println("Middle Click Release");
+                    }
+                    else if (me.getButton() == MouseEvent.BUTTON3) {
+                        os.println("Right Click Release");
+                    }
+                }
+                public void mouseEntered(MouseEvent me) { }
+                public void mouseExited(MouseEvent me) { }
+                public void mouseClicked(MouseEvent me) { }
+            });
             Server.frame.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -155,6 +179,7 @@ class clientThread extends Thread {
                         os.println("F8");
                     else if(e.getKeyCode() == KeyEvent.VK_WINDOWS)
                         os.println("Windows");
+                    /*
                     else if(e.getKeyCode() == KeyEvent.VK_DELETE) {
                         if(!Server.fullscreen){
                             Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -167,6 +192,56 @@ class clientThread extends Thread {
                             Server.fullscreen = false;
                         }
                     }
+                    */
+                }
+            });
+            Server.frame2.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                        os.println("Enter");
+                    else if(e.getKeyCode() == KeyEvent.VK_SHIFT)
+                        os.println("Shift");
+                    else if(e.getKeyCode() == KeyEvent.VK_CAPS_LOCK)
+                        os.println("Caps Lock");
+                    else if(e.getKeyCode() == KeyEvent.VK_CONTROL)
+                        os.println("Control");
+                    else if(e.getKeyCode() == KeyEvent.VK_ALT)
+                        os.println("Alt");
+                    else if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+                        os.println("Back Space");
+                    else if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
+                        os.println("Escape");
+                    else if(e.getKeyCode() == KeyEvent.VK_UP)
+                        os.println("Up Arrow");
+                    else if(e.getKeyCode() == KeyEvent.VK_DOWN)
+                        os.println("Down Arrow");
+                    else if(e.getKeyCode() == KeyEvent.VK_LEFT)
+                        os.println("Left Arrow");
+                    else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+                        os.println("Right Arrow");
+                    else if(e.getKeyCode() == KeyEvent.VK_F6)
+                        os.println("F6");
+                    else if(e.getKeyCode() == KeyEvent.VK_F7)
+                        os.println("F7");
+                    else if(e.getKeyCode() == KeyEvent.VK_F8)
+                        os.println("F8");
+                    else if(e.getKeyCode() == KeyEvent.VK_WINDOWS)
+                        os.println("Windows");
+                    /*
+                    else if(e.getKeyCode() == KeyEvent.VK_DELETE) {
+                        if(!Server.fullscreen){
+                            Server.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            Server.frame.setUndecorated(true);
+                            Server.frame.setVisible(true);
+                            Server.fullscreen = true;
+                        }else{
+                            Server.frame.setSize(1280, 720);
+                            Server.frame.setVisible(true);
+                            Server.fullscreen = false;
+                        }
+                    }
+                    */
                 }
             });
             while (true) {

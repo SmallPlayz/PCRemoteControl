@@ -9,28 +9,49 @@ import java.io.*;
 import java.net.Socket;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Client extends Thread {
 
     private static Socket clientSocket = null;
     public static PrintStream os = null;
     private static DataInputStream is = null;
+
+    private static Socket clientSocket2 = null;
+    public static PrintStream os2 = null;
+    private static DataInputStream is2 = null;
     public static void main(String[] args) {
+
+        JFrame frame = new JFrame("E");
+        frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        frame.setVisible(true);
+
         String serverName = "10.10.3.242";
-        int port = 6066, port2 = 6065;
+        int port = 6066, port2 = 6065, port3 = 6067;
         try{
             clientSocket = new Socket(serverName, port2);
             os = new PrintStream(clientSocket.getOutputStream());
             is = new DataInputStream(clientSocket.getInputStream());
+
+            clientSocket2 = new Socket(serverName, port3);
+            os2 = new PrintStream(clientSocket2.getOutputStream());
+            is2 = new DataInputStream(clientSocket2.getInputStream());
+
             Client thread = new Client();
             thread.start();
 
             while(true) {
                 Socket client = new Socket(serverName, port);
                 Robot bot = new Robot();
-                BufferedImage bimg = bot.createScreenCapture(new Rectangle(0, 0, 3200, 1800));
+                BufferedImage bimg = bot.createScreenCapture(new Rectangle(0, 0, 1600, 900));
                 ImageIO.write(bimg,"JPG",client.getOutputStream());
                 client.close();
+
+                Socket client2 = new Socket(serverName, port3);
+                Robot bot2 = new Robot();
+                BufferedImage bimg2 = bot2.createScreenCapture(new Rectangle(1600, 900, 1600, 900));
+                ImageIO.write(bimg2,"JPG",client2.getOutputStream());
+                client2.close();
                 Thread.sleep((long) 16.66);
             }
         } catch(IOException | AWTException e) {
