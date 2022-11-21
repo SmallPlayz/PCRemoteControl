@@ -16,7 +16,7 @@ public class Client extends Thread {
     public static PrintStream os = null;
     private static DataInputStream is = null;
     public static void main(String[] args) {
-        String serverName = "localhost";
+        String serverName = "10.10.3.242";
         int port = 6066, port2 = 6065;
         try{
             clientSocket = new Socket(serverName, port2);
@@ -28,7 +28,7 @@ public class Client extends Thread {
             while(true) {
                 Socket client = new Socket(serverName, port);
                 Robot bot = new Robot();
-                BufferedImage bimg = bot.createScreenCapture(new Rectangle(0, 0, 420, 420));
+                BufferedImage bimg = bot.createScreenCapture(new Rectangle(0, 0, 3200, 1800));
                 ImageIO.write(bimg,"JPG",client.getOutputStream());
                 client.close();
                 Thread.sleep((long) 16.66);
